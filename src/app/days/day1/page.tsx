@@ -1,3 +1,4 @@
+import { splitStrings } from "@/app/utils/splitStrings";
 import { locationIds } from "./input";
 
 const createLeftRightArraysSorted = (splitString: string[]): number[][] => {
@@ -17,7 +18,7 @@ const createLeftRightArraysSorted = (splitString: string[]): number[][] => {
 };
 
 export default function Page() {
-  const splitString = locationIds.trim().split(/\s+/);
+  const splitString = splitStrings(locationIds);
   const [left, right] = createLeftRightArraysSorted(splitString);
 
   const combinedArray = left.map((leftElement, index) => {
@@ -46,7 +47,7 @@ export default function Page() {
         Part 1 solution: <strong>{total}</strong>
       </p>
       <p>
-        Part 2 solution: <strong>{similarityScore}</strong> <u>should be 31</u>
+        Part 2 solution: <strong>{similarityScore}</strong>
       </p>
     </>
   );
