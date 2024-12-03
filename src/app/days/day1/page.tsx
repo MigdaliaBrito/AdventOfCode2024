@@ -26,11 +26,28 @@ export default function Page() {
     return Math.abs(leftElement - rightElement);
   });
 
+  const similarityScoreArray = left.map((leftElement) => {
+    const foundInstances = right.filter(
+      (rightElement) => rightElement === leftElement,
+    ).length;
+
+    return leftElement * foundInstances;
+  });
+
   const total = combinedArray.reduce((sum, num) => sum + num, 0);
+  const similarityScore = similarityScoreArray.reduce(
+    (sum, num) => sum + num,
+    0,
+  );
 
   return (
     <>
-      Total: <strong>{total}</strong>
+      <p>
+        Part 1 solution: <strong>{total}</strong>
+      </p>
+      <p>
+        Part 2 solution: <strong>{similarityScore}</strong> <u>should be 31</u>
+      </p>
     </>
   );
 }
